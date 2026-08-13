@@ -1,0 +1,35 @@
+model User {
+  id                     String    @id @default(uuid())
+  createdAt              DateTime  @default(now())
+  updatedAt              DateTime  @updatedAt
+  name                   String
+  email                  String    @unique
+  password               String
+  username               String?
+  dob                    DateTime?
+  phone                  String?
+  gender                 Gender    @default(male)
+  role                   Role      @default(USER)
+  stripeAccountId        String?
+  bio                    String?
+  addressCountry         String?
+  addressCityState       String?
+  addressRoadArea        String?
+  addressPostalCode      String?
+  addressTaxId           String?
+  profileImage           String?
+  multiProfileImage      String[]
+  pdfFile                String?
+  otp                    String?
+  otpExpires             DateTime?
+  otpVerified            Boolean   @default(false)
+  resetExpires           DateTime?
+  isVerified             Boolean   @default(false)
+  refreshToken           String?
+  hasActiveSubscription  Boolean   @default(false)
+  subscriptionExpireDate DateTime?
+  blockedUsers           String[]
+  language               String    @default("en")
+
+  @@map("users")
+}
